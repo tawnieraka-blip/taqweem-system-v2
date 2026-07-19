@@ -284,3 +284,83 @@ function renderEmployees(list){
     });
 
 }
+/* ==========================================
+Search
+========================================== */
+
+function setupEvents(){
+
+    searchEmployee.addEventListener("input",searchEmployees);
+
+    addEmployee.addEventListener("click",addEmployeeForm);
+
+}
+
+function searchEmployees(){
+
+    const keyword =
+
+        searchEmployee.value
+        .trim()
+        .toLowerCase();
+
+    const filtered = employees.filter(employee=>{
+
+        return (
+
+            employee.name.toLowerCase().includes(keyword) ||
+
+            employee.department.toLowerCase().includes(keyword) ||
+
+            employee.job.toLowerCase().includes(keyword) ||
+
+            employee.role.toLowerCase().includes(keyword)
+
+        );
+
+    });
+
+    renderEmployees(filtered);
+
+}
+
+/* ==========================================
+Add Employee
+========================================== */
+
+function addEmployeeForm(){
+
+    // سيتم استبدالها بنافذة احترافية (Modal)
+    // عند ربط Google Apps Script
+
+    console.log("Add Employee");
+
+}
+
+/* ==========================================
+Edit Employee
+========================================== */
+
+function editEmployee(id){
+
+    const employee = employees.find(e=>e.id===id);
+
+    if(!employee) return;
+
+    console.log("Edit",employee);
+
+}
+
+/* ==========================================
+Delete Employee
+========================================== */
+
+function deleteEmployee(id){
+
+    if(!confirm("هل تريد حذف الموظف؟")) return;
+
+    employees = employees.filter(e=>e.id!==id);
+
+    renderEmployees(employees);
+
+}
