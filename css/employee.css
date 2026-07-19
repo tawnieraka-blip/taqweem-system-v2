@@ -433,3 +433,194 @@ Profile
     font-weight:700;
 
 }
+/* ==========================================
+Bottom Navigation
+========================================== */
+
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:15px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:calc(100% - 30px);
+
+    max-width:430px;
+
+    height:72px;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.50);
+
+    box-shadow:0 10px 35px rgba(15,23,42,.10);
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+.bottom-nav a{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:5px;
+
+    text-decoration:none;
+
+    color:var(--muted);
+
+    transition:.30s;
+
+}
+
+.bottom-nav a i{
+
+    font-size:19px;
+
+}
+
+.bottom-nav a span{
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.bottom-nav a.active{
+
+    color:var(--primary);
+
+}
+
+.bottom-nav a:hover{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================
+Dark Mode
+========================================== */
+
+body[data-theme="dark"]{
+
+    --background:#0F172A;
+
+    --card:#1E293B;
+
+    --text:#F8FAFC;
+
+    --muted:#CBD5E1;
+
+    --border:#334155;
+
+    --shadow:none;
+
+}
+
+body[data-theme="dark"] .icon-btn{
+
+    background:#334155;
+
+    color:#fff;
+
+}
+
+body[data-theme="dark"] .messages-card,
+
+body[data-theme="dark"] .profile-card,
+
+body[data-theme="dark"] .time-box,
+
+body[data-theme="dark"] .date-box{
+
+    background:#1E293B;
+
+}
+
+body[data-theme="dark"] .message-icon{
+
+    background:#334155;
+
+    color:#60A5FA;
+
+}
+
+body[data-theme="dark"] .bottom-nav{
+
+    background:rgba(30,41,59,.95);
+
+    border-color:#334155;
+
+}
+
+/* ==========================================
+Responsive
+========================================== */
+
+@media (max-width:480px){
+
+    .employee-page{
+
+        padding:16px;
+
+        padding-bottom:110px;
+
+    }
+
+    .header-center h1{
+
+        font-size:18px;
+
+    }
+
+    .logo{
+
+        width:60px;
+
+    }
+
+    .datetime-card{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .action-card button{
+
+        padding:18px;
+
+        font-size:18px;
+
+    }
+
+    .action-card button i{
+
+        font-size:24px;
+
+    }
+
+}
