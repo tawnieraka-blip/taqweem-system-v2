@@ -1,170 +1,286 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+/* ==========================================
+   Employees Page
+========================================== */
 
-<head>
+"use strict";
 
-<meta charset="UTF-8">
+/* ==========================================
+User
+========================================== */
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+const user = load("user");
 
-<title>إدارة الموظفين</title>
+if (!user) {
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    window.location.href = "index.html";
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+}
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+/* ==========================================
+Elements
+========================================== */
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+const employeesList = document.getElementById("employeesList");
 
-<link rel="stylesheet" href="css/common.css">
+const searchEmployee = document.getElementById("searchEmployee");
 
-<link rel="stylesheet" href="css/employees.css">
+const addEmployee = document.getElementById("addEmployee");
 
-</head>
+const themeBtn = document.getElementById("themeBtn");
 
-<body>
+/* ==========================================
+Data
+========================================== */
 
-<div class="employees-page">
+let employees = [];
 
-<header class="header">
+/* ==========================================
+Start
+========================================== */
 
-<div class="header-left">
+init();
 
-<img
-src="assets/logo.png"
-class="logo"
-alt="Logo">
+function init(){
 
-</div>
+    initTheme();
 
-<div class="header-center">
+    loadEmployees();
 
-<h1>
+    setupEvents();
 
-إدارة الموظفين
+}
+/* ==========================================
+Theme
+========================================== */
 
-</h1>
+function initTheme(){
 
-<span>
+    const theme =
 
-منصة إدارة التقويم والمتابعة
+        localStorage.getItem("theme") || "light";
 
-</span>
+    document.body.dataset.theme = theme;
 
-</div>
+    updateThemeIcon(theme);
 
-<div class="header-right">
+}
 
-<button
-id="themeBtn"
-class="icon-btn">
+themeBtn.addEventListener("click",()=>{
 
-<i class="fa-regular fa-moon"></i>
+    const mode =
 
-</button>
+        document.body.dataset.theme==="dark"
 
-</div>
+        ? "light"
 
-</header>
+        : "dark";
 
-<section class="search-box">
+    document.body.dataset.theme = mode;
 
-<div class="search-input">
+    localStorage.setItem("theme",mode);
 
-<i class="fa-solid fa-magnifying-glass"></i>
+    updateThemeIcon(mode);
 
-<input
+});
 
-type="text"
+function updateThemeIcon(mode){
 
-id="searchEmployee"
+    themeBtn.innerHTML =
 
-placeholder="ابحث عن موظف">
+    mode==="dark"
 
-</div>
+    ?
 
-<button id="addEmployee">
+    '<i class="fa-solid fa-sun"></i>'
 
-<i class="fa-solid fa-user-plus"></i>
+    :
 
-إضافة
+    '<i class="fa-regular fa-moon"></i>';
 
-</button>
+}
+/* ==========================================
+Load Employees
+========================================== */
 
-</section>
+async function loadEmployees(){
 
-<section id="employeesList">
+    // بيانات تجريبية مؤقتة
+    // سيتم استبدالها ببيانات Google Apps Script
 
-<!-- بطاقات الموظفين -->
+    employees = [
 
-</section>
+        {
 
-</div>
+            id:1,
 
-<nav class="bottom-nav">
+            name:"أحمد محمد",
 
-<a href="dashboard.html">
+            department:"قسم الإعلام",
 
-<i class="fa-solid fa-house"></i>
+            job:"موظف",
 
-<span>
+            role:"موظف"
 
-الرئيسية
+        },
 
-</span>
+        {
 
-</a>
+            id:2,
 
-<a href="reports.html">
+            name:"محمد علي",
 
-<i class="fa-solid fa-file-lines"></i>
+            department:"قسم الدعوة",
 
-<span>
+            job:"مدير قسم",
 
-التقارير
+            role:"مدير قسم"
 
-</span>
+        },
 
-</a>
+        {
 
-<a
-href="employees.html"
-class="active">
+            id:3,
 
-<i class="fa-solid fa-users"></i>
+            name:"خالد عبدالله",
 
-<span>
+            department:"الإدارة",
 
-الموظفون
+            job:"سكرتير",
 
-</span>
+            role:"موظف"
 
-</a>
+        }
 
-<a href="settings.html">
+    ];
 
-<i class="fa-solid fa-gear"></i>
+    renderEmployees(employees);
 
-<span>
+}
 
-الإعدادات
+/* ==========================================
+Render Employees
+========================================== */
 
-</span>
+function renderEmployees(list){
 
-</a>
+    employeesList.innerHTML = "";
 
-</nav>
+    if(list.length === 0){
 
-<script src="js/config.js"></script>
+        employeesList.innerHTML = `
 
-<script src="js/common.js"></script>
+        <div class="employee-card">
 
-<script src="js/api.js"></script>
+            <div class="employee-name">
 
-<script src="js/employees.js"></script>
+                <h3>
 
-</body>
+                    لا يوجد موظفون
 
-</html>
+                </h3>
+
+            </div>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    list.forEach(employee=>{
+
+        employeesList.innerHTML += `
+
+        <div class="employee-card">
+
+            <div class="employee-header">
+
+                <div class="employee-avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div class="employee-name">
+
+                    <h3>${employee.name}</h3>
+
+                    <span>${employee.department}</span>
+
+                </div>
+
+            </div>
+
+            <div class="employee-info">
+
+                <div class="info-row">
+
+                    <span class="info-label">
+
+                        المسمى الوظيفي
+
+                    </span>
+
+                    <span class="info-value">
+
+                        ${employee.job}
+
+                    </span>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span class="info-label">
+
+                        الصلاحية
+
+                    </span>
+
+                    <span class="info-value">
+
+                        ${employee.role}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="employee-actions">
+
+                <button
+
+                    class="edit-btn"
+
+                    onclick="editEmployee(${employee.id})">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    تعديل
+
+                </button>
+
+                <button
+
+                    class="delete-btn"
+
+                    onclick="deleteEmployee(${employee.id})">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    حذف
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
