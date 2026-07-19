@@ -29,8 +29,7 @@ async function login() {
 
     if (!code) {
 
-        alert("يرجى إدخال كود الدخول");
-
+        showToast("يرجى إدخال كود الدخول","warning");
         return;
 
     }
@@ -86,8 +85,7 @@ async function login() {
 
     }
 
-    alert("كود الدخول غير صحيح");
-
+    showToast("كود الدخول غير صحيح","error");
 }
 
 /* ==========================
@@ -131,6 +129,5 @@ function setTheme(mode) {
 
 installBtn.addEventListener("click", function () {
 
-    alert("سيتم تفعيل تحميل التطبيق لاحقًا.");
-
+    showToast("سيتم تفعيل تحميل التطبيق قريبًا","info");
 });
