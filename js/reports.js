@@ -21,10 +21,6 @@ if (!user) {
 Elements
 ========================================== */
 
-const clock = document.getElementById("clock");
-const day = document.getElementById("day");
-const date = document.getElementById("date");
-const hijri = document.getElementById("hijri");
 
 const themeBtn = document.getElementById("themeBtn");
 
@@ -43,68 +39,10 @@ init();
 
 function init(){
 
-    startClock();
 
     initTheme();
 
     setupEvents();
-
-}
-/* ==========================================
-Clock
-========================================== */
-
-function startClock(){
-
-    updateClock();
-
-    setInterval(updateClock,1000);
-
-}
-
-function updateClock(){
-
-    const now = new Date();
-
-    clock.textContent = now.toLocaleTimeString("ar-SA",{
-
-        hour:"2-digit",
-
-        minute:"2-digit"
-
-    });
-
-    day.textContent = now.toLocaleDateString("ar-SA",{
-
-        weekday:"long"
-
-    });
-
-    date.textContent = now.toLocaleDateString("ar-SA",{
-
-        year:"numeric",
-
-        month:"long",
-
-        day:"numeric"
-
-    });
-
-    hijri.textContent = new Intl.DateTimeFormat(
-
-        "ar-SA-u-ca-islamic",
-
-        {
-
-            year:"numeric",
-
-            month:"long",
-
-            day:"numeric"
-
-        }
-
-    ).format(now);
 
 }
 
