@@ -10,7 +10,7 @@
 
 const user = load("user");
 
-if (!user) {
+if (!user || user.role !== "admin") {
 
     window.location.href = "index.html";
 
