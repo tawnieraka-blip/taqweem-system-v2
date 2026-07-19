@@ -145,75 +145,7 @@ Header
 
 }
 
-/* ==========================
-Date
-========================== */
 
-.datetime-card{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:15px;
-
-    margin-bottom:22px;
-
-}
-
-.time-box,
-
-.date-box{
-
-    background:#fff;
-
-    border-radius:22px;
-
-    padding:18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.time-box i,
-
-.date-box i{
-
-    color:var(--primary);
-
-    font-size:22px;
-
-}
-
-.time-box h2{
-
-    font-size:30px;
-
-    font-weight:800;
-
-}
-
-.time-box span,
-
-.date-box span{
-
-    color:var(--muted);
-
-    font-size:13px;
-
-}
-
-.date-box h3{
-
-    font-size:16px;
-
-}
 /* ==========================================
 Report Card
 ========================================== */
