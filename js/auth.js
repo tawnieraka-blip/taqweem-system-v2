@@ -27,81 +27,66 @@ async function login() {
 
     const code = loginCode.value.trim();
 
-    if (code === "") {
+    if (!code) {
 
         alert("يرجى إدخال كود الدخول");
-
-        loginCode.focus();
 
         return;
 
     }
 
-    loginBtn.disabled = true;
+    // مدير النظام
+    if (code === "1111") {
 
-    loginBtn.innerHTML =
-        '<i class="fa-solid fa-spinner fa-spin"></i> جاري تسجيل الدخول...';
+        save("user",{
 
-    try {
+            name:"مدير النظام",
 
-        const result = await API.request("login", {
-
-            code: code
+            role:"admin"
 
         });
 
-        if (!result.success) {
+        window.location.href="dashboard.html";
 
-            alert(result.message || "كود الدخول غير صحيح");
-
-            loginBtn.disabled = false;
-
-            loginBtn.innerHTML =
-                '<i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول';
-
-            return;
-
-        }
-
-        localStorage.setItem(
-            "user",
-            JSON.stringify(result.data)
-        );
-
-        switch (result.data.role.toLowerCase()) {
-
-            case "admin":
-
-                window.location.href = "dashboard.html";
-
-                break;
-
-            case "manager":
-
-                window.location.href = "managers.html";
-
-                break;
-
-            default:
-
-                window.location.href = "employee.html";
-
-        }
+        return;
 
     }
 
-    catch (error) {
+    // مدير قسم
+    if (code === "2222") {
 
-        alert("تعذر الاتصال بالخادم");
+        save("user",{
 
-        console.error(error);
+            name:"مدير القسم",
 
-        loginBtn.disabled = false;
+            role:"manager"
 
-        loginBtn.innerHTML =
-            '<i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول';
+        });
+
+        window.location.href="managers.html";
+
+        return;
 
     }
+
+    // موظف
+    if (code === "3333") {
+
+        save("user",{
+
+            name:"الموظف",
+
+            role:"employee"
+
+        });
+
+        window.location.href="employee.html";
+
+        return;
+
+    }
+
+    alert("كود الدخول غير صحيح");
 
 }
 
