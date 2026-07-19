@@ -39,11 +39,19 @@ async function login() {
 
         save("user",{
 
-            name:"مدير النظام",
+    id:1,
 
-            role:"admin"
+    code:"1111",
 
-        });
+    name:"مدير النظام",
+
+    department:"الإدارة",
+
+    job:"مدير النظام",
+
+    role:"admin"
+
+});
 
         window.location.href="dashboard.html";
 
@@ -54,13 +62,21 @@ async function login() {
     // مدير قسم
     if (code === "2222") {
 
-        save("user",{
+       save("user",{
 
-            name:"مدير القسم",
+    id:2,
 
-            role:"manager"
+    code:"2222",
 
-        });
+    name:"مدير القسم",
+
+    department:"الإعلام",
+
+    job:"مدير قسم",
+
+    role:"manager"
+
+});
 
         window.location.href="managers.html";
 
@@ -73,11 +89,19 @@ async function login() {
 
         save("user",{
 
-            name:"الموظف",
+    id:3,
 
-            role:"employee"
+    code:"3333",
 
-        });
+    name:"الموظف",
+
+    department:"الإعلام",
+
+    job:"موظف",
+
+    role:"employee"
+
+});
 
         window.location.href="employee.html";
 
