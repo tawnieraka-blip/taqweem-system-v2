@@ -8,13 +8,19 @@
 User
 ========================================== */
 
-const user = load("user");
+const user = {
 
-if (!user) {
+    name: "محمد",
 
-    window.location.href = "index.html";
+    role: "admin"
 
-}
+    // admin
+    // manager
+    // employee
+
+};
+
+save("user", user);
 
 /* ==========================================
 Elements
