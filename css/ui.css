@@ -1,0 +1,155 @@
+/* ==========================================
+   UI Library
+   Version : 1.0
+========================================== */
+
+/* ==========================================
+Toast
+========================================== */
+
+#toast{
+
+    position:fixed;
+
+    top:25px;
+
+    left:50%;
+
+    transform:translateX(-50%) translateY(-30px);
+
+    min-width:280px;
+
+    max-width:90%;
+
+    padding:16px 20px;
+
+    border-radius:18px;
+
+    color:#fff;
+
+    font-family:"Cairo",sans-serif;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.30s;
+
+    z-index:99999;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+}
+
+#toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateX(-50%) translateY(0);
+
+}
+
+#toast.success{
+
+    background:#16A34A;
+
+}
+
+#toast.error{
+
+    background:#DC2626;
+
+}
+
+#toast.warning{
+
+    background:#F59E0B;
+
+}
+
+#toast.info{
+
+    background:#2563EB;
+
+}
+/* ==========================================
+Loading Button
+========================================== */
+
+button:disabled{
+
+    opacity:.8;
+
+    cursor:not-allowed;
+
+}
+
+.fa-spinner{
+
+    margin-left:8px;
+
+}
+
+/* ==========================================
+Animations
+========================================== */
+
+.fade-in{
+
+    animation:fadeIn .35s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.scale-in{
+
+    animation:scaleIn .25s ease;
+
+}
+
+@keyframes scaleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
