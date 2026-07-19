@@ -1,11 +1,123 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>منصة إدارة التقويم والمتابعة</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/common.css">
+
+    <link rel="stylesheet" href="css/login.css">
+
 </head>
+
 <body>
 
+    <div class="login-page">
+
+        <!-- Header -->
+
+        <header class="top-bar">
+
+            <button id="installBtn" class="icon-btn">
+
+                <i class="fa-solid fa-download"></i>
+
+            </button>
+
+            <button id="themeBtn" class="icon-btn">
+
+                <i class="fa-regular fa-moon"></i>
+
+            </button>
+
+        </header>
+
+        <!-- Logo -->
+
+        <div class="logo-box">
+
+            <img src="assets/logo.png" alt="شعار الجمعية">
+
+        </div>
+
+        <!-- Title -->
+
+        <div class="title-box">
+
+            <h1>
+
+                منصة إدارة التقويم والمتابعة
+
+            </h1>
+
+            <p>
+
+                جمعية الدعوة والإرشاد وتوعية الجاليات بالراكة
+
+            </p>
+
+        </div>
+
+        <!-- Login Card -->
+
+        <section class="login-card">
+
+            <label>
+
+                كود الدخول
+
+            </label>
+
+            <input
+
+                id="loginCode"
+
+                type="password"
+
+                maxlength="10"
+
+                placeholder="أدخل كود الدخول">
+
+            <button id="loginBtn">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                تسجيل الدخول
+
+            </button>
+
+        </section>
+
+        <!-- Footer -->
+
+        <footer>
+
+            الإصدار 1.0.0
+
+        </footer>
+
+    </div>
+
+    <script src="js/config.js"></script>
+
+    <script src="js/common.js"></script>
+
+    <script src="js/auth.js"></script>
+
 </body>
+
 </html>
