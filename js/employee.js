@@ -11,7 +11,7 @@ User
 
 const user = load("user");
 
-if (!user) {
+if (!user || user.role !== "employee") {
 
     window.location.href = "index.html";
 
